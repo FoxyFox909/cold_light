@@ -1,5 +1,8 @@
 extends Node
 
+## How
+@export var damage_per_tick : int = 2
+
 @onready var timer: Timer = $Timer
 
 func _ready() -> void:
@@ -11,8 +14,5 @@ func stop() -> void:
 	timer.stop()
 
 func _on_timer_timout() -> void:
-	var damage_amount : int = 2
-	EventBus.freezing_damage_tick.emit(damage_amount)
-	print("freeze tick (", damage_amount, " damage)")
-
-## Change for github test
+	EventBus.freezing_damage_tick.emit(damage_per_tick)
+	#print("freeze tick (", damage_per_tick, " damage)")

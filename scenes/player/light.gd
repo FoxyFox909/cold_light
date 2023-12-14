@@ -4,6 +4,8 @@ var is_light_on : bool = false
 var is_locked : bool = false
 var reload_tween : Tween
 
+var energy : float = 1.0 : set = set_energy
+
 @onready var player_character: PlayerCharacter = $".."
 @onready var point_light_2d: PointLight2D = $PointLight2D
 @onready var light_timer: Timer = %LightTimer
@@ -14,6 +16,9 @@ var reload_tween : Tween
 func _ready() -> void:
 	light_timer.timeout.connect(_on_light_timer_timeout)
 	light_reload_timer.timeout.connect(_on_light_reload_timer_timeout)
+
+	#await get_tree().create_timer(2.0).timeout
+	#death_light()
 
 func _process(_delta: float) -> void:
 	point_light_2d.visible = is_light_on
@@ -53,6 +58,29 @@ func _input(event: InputEvent) -> void:
 		light_timer.stop()
 		light_reload_timer.start()
 
+func death_light() -> void:
+	is_locked = true
+	if is_light_on and is_instance_valid(reload_tween):
+		reload_tween.kill()
+
+	is_light_on = true
+	energy = 0
+	var tween : Tween = get_tree().create_tween()
+	tween.tween_property(self, "energy", 1, 0.5)
+	tween.tween_property(self, "energy", 0, 0.5).set_delay(0.5)
+	tween.tween_property(self, "energy", 1, 0.20).set_delay(0.5)
+	tween.tween_property(self, "energy", 0, 0.30)
+	tween.tween_property(self, "energy", 0.5, 0.10).set_delay(0.5)
+	tween.tween_property(self, "energy", 0, 0.10)
+	tween.tween_callback(func() -> void: is_light_on = false)
+	tween.tween_property(player_character, "modulate:a", 0.0, 1.5)
+	tween.tween_property($PassiveLight, "energy", 0.0, 1.0)
+
+func set_energy(value: float) -> void:
+	energy = clampf(value, 0.0, 1.0)
+	point_light_2d.energy = energy
+	#print("new light_opacity: ", $Light/PointLight2D.modulate.a)
+
 func _on_light_timer_timeout() -> void:
 	player_character.light_fuel -= player_character.light_cost
 
@@ -74,3 +102,5 @@ func _on_light_reload_timer_timeout() -> void:
 func _instance_tween() -> Tween:
 	reload_tween = get_tree().create_tween()
 	return reload_tween
+
+

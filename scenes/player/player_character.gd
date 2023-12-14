@@ -29,6 +29,9 @@ func _ready() -> void:
 	light_fuel_updated.emit(light_fuel)
 	sprite.play("fly_down")
 
+	await get_tree().create_timer(2.0).timeout
+	die()
+
 func get_input() -> void:
 	var input_direction : Vector2 = Input.get_vector("left", "right", "up", "down")
 
@@ -94,6 +97,15 @@ func set_health(value: int) -> void:
 
 func needs_resources() -> bool:
 	return health < max_health or light_fuel < max_light_fuel
+
+## Firefly fucking dies ;-;
+func die() -> void:
+	set_physics_process(false)
+	$CollisionShape2D.set_deferred("disabled", true)
+	sprite.pause()
+	light.death_light()
+
+
 
 func _on_freezing_damage_tick(damage_amount: int) -> void:
 	health -= damage_amount
