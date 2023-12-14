@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw0xfgcbak5yx"]
+
+[ext_resource type="PackedScene" uid="uid://cllyfwjmy02b2" path="res://scenes/world/maze.tscn" id="1_ujtys"]
+[ext_resource type="PackedScene" uid="uid://cdcd4ggcty3gn" path="res://scenes/player/player_character.tscn" id="2_n3hi5"]
+[ext_resource type="PackedScene" uid="uid://cjne56m1vmatg" path="res://scenes/world/freeze_ticker.tscn" id="3_k7bgr"]
+[ext_resource type="PackedScene" uid="uid://deu45avcntuc8" path="res://assets/texture/character/health_tick/health_tick.tscn" id="4_4ey4c"]
+
+[node name="main" type="Node2D"]
+
+[node name="Maze" parent="." instance=ExtResource("1_ujtys")]
+
+[node name="PlayerCharacter" parent="." instance=ExtResource("2_n3hi5")]
+position = Vector2(101, 78)
+
+[node name="FreezeTicker" parent="." instance=ExtResource("3_k7bgr")]
+
+[node name="HealthTick" parent="." instance=ExtResource("4_4ey4c")]
+position = Vector2(98, 122)
+
+[node name="HealthTick2" parent="." instance=ExtResource("4_4ey4c")]
+position = Vector2(240, 176)
+
+[node name="HealthTick3" parent="." instance=ExtResource("4_4ey4c")]
+position = Vector2(343, 175)
+
+[node name="HealthTick4" parent="." instance=ExtResource("4_4ey4c")]
+position = Vector2(327, 38)
+
+[node name="HealthTick5" parent="." instance=ExtResource("4_4ey4c")]
+position = Vector2(87, 218)
+
+[node name="HealthTick6" parent="." instance=ExtResource("4_4ey4c")]
+position = Vector2(109, 284)
+
+[node name="HealthTick7" parent="." instance=ExtResource("4_4ey4c")]
+position = Vector2(111, 213)
+
+[node name="HealthTick8" parent="." instance=ExtResource("4_4ey4c")]
+position = Vector2(80, 336)
+
+[node name="HealthTick9" parent="." instance=ExtResource("4_4ey4c")]
+position = Vector2(105, 409)

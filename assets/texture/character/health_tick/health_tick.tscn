@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://deu45avcntuc8"]
+
+[ext_resource type="Script" path="res://assets/texture/character/health_tick/health_tick.gd" id="1_55gcw"]
+[ext_resource type="Texture2D" uid="uid://cgkpk4w5itdqj" path="res://icon.svg" id="2_dgn52"]
+[ext_resource type="Texture2D" uid="uid://do0h62tsqfmam" path="res://assets/texture/light/point_light.png" id="3_ui8ua"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cmxhq"]
+radius = 16.4924
+
+[node name="HealthTick" type="CharacterBody2D"]
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_55gcw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.211765, 0.27451, 1)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_dgn52")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.25, 0.25)
+shape = SubResource("CircleShape2D_cmxhq")
+
+[node name="PointLight2D" type="PointLight2D" parent="CollisionShape2D"]
+scale = Vector2(0.15, 0.15)
+color = Color(1, 0.137255, 0.137255, 1)
+texture = ExtResource("3_ui8ua")
