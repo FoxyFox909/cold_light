@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cllyfwjmy02b2"]
+[gd_scene load_steps=8 format=3 uid="uid://cllyfwjmy02b2"]
 
 [ext_resource type="Texture2D" uid="uid://dwxw0f5wcpsha" path="res://assets/texture/tileset/maze_tileset.png" id="1_fnl88"]
 [ext_resource type="Script" path="res://scenes/world/maze.gd" id="2_bmvjd"]
+[ext_resource type="Texture2D" uid="uid://crh0rvorf8736" path="res://assets/texture/particle/snow_particle.png" id="3_maen1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0n42p"]
 friction = 0.0
@@ -41,6 +42,19 @@ terrain_set_0/terrain_0/name = "ice_wall"
 terrain_set_0/terrain_0/color = Color(0.686275, 0, 0.447059, 1)
 sources/0 = SubResource("TileSetAtlasSource_jv7qk")
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lrmsu"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(640, 1, 1)
+angular_velocity_min = 30.0
+angular_velocity_max = 90.0
+gravity = Vector3(0, 98, 0)
+radial_accel_min = -45.0
+radial_accel_max = 45.0
+scale_max = 1.5
+turbulence_noise_strength = 10.1
+turbulence_noise_scale = 4.141
+
 [node name="Maze" type="TileMap"]
 tile_set = SubResource("TileSet_ejohw")
 format = 2
@@ -53,3 +67,14 @@ script = ExtResource("2_bmvjd")
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
 color = Color(0, 0, 0, 1)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+z_index = 2
+z_as_relative = false
+position = Vector2(580, -76)
+amount = 2000
+process_material = SubResource("ParticleProcessMaterial_lrmsu")
+texture = ExtResource("3_maen1")
+lifetime = 4.0
+preprocess = 5.0
+visibility_rect = Rect2(-643, -3.99805, 1285.41, 798.394)
