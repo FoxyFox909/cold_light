@@ -1,16 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://dw0xfgcbak5yx"]
+[gd_scene load_steps=6 format=3 uid="uid://dw0xfgcbak5yx"]
 
+[ext_resource type="Script" path="res://scenes/level_handler.gd" id="1_8qpiv"]
 [ext_resource type="PackedScene" uid="uid://cllyfwjmy02b2" path="res://scenes/world/maze.tscn" id="1_ujtys"]
 [ext_resource type="PackedScene" uid="uid://cdcd4ggcty3gn" path="res://scenes/player/player_character.tscn" id="2_n3hi5"]
 [ext_resource type="PackedScene" uid="uid://cjne56m1vmatg" path="res://scenes/world/freeze_ticker.tscn" id="3_k7bgr"]
 [ext_resource type="PackedScene" uid="uid://deu45avcntuc8" path="res://assets/texture/character/health_tick/health_tick.tscn" id="4_4ey4c"]
 
-[node name="main" type="Node2D"]
-
-[node name="Maze" parent="." instance=ExtResource("1_ujtys")]
+[node name="level_handler" type="Node2D"]
+script = ExtResource("1_8qpiv")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_n3hi5")]
 position = Vector2(101, 78)
+
+[node name="Maze" parent="." instance=ExtResource("1_ujtys")]
 
 [node name="FreezeTicker" parent="." instance=ExtResource("3_k7bgr")]
 

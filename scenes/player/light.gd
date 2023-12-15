@@ -16,6 +16,7 @@ var energy : float = 1.0 : set = set_energy
 func _ready() -> void:
 	light_timer.timeout.connect(_on_light_timer_timeout)
 	light_reload_timer.timeout.connect(_on_light_reload_timer_timeout)
+	player_character.health_updated.connect(on_player_health_updated)
 
 	#await get_tree().create_timer(2.0).timeout
 	#death_light()
@@ -59,26 +60,32 @@ func _input(event: InputEvent) -> void:
 		light_reload_timer.start()
 
 func death_light() -> void:
+	light_timer.stop()
+	light_reload_timer.stop()
+
 	is_locked = true
-	if is_light_on and is_instance_valid(reload_tween):
+	if is_instance_valid(reload_tween):
 		reload_tween.kill()
 
 	is_light_on = true
 	energy = 0
 	var tween : Tween = get_tree().create_tween()
-	tween.tween_property(self, "energy", 1, 0.5)
-	tween.tween_property(self, "energy", 0, 0.5).set_delay(0.5)
-	tween.tween_property(self, "energy", 1, 0.20).set_delay(0.5)
-	tween.tween_property(self, "energy", 0, 0.30)
-	tween.tween_property(self, "energy", 0.5, 0.10).set_delay(0.5)
+	tween.tween_property(self, "energy", 1, 0.25)
+	tween.tween_property(self, "energy", 0, 0.5).set_delay(0.25)
+	tween.tween_property(self, "energy", 1, 0.20).set_delay(0.25)
+	tween.tween_property(self, "energy", 0, 0.15)
+	tween.tween_property(self, "energy", 0.5, 0.10).set_delay(0.25)
 	tween.tween_property(self, "energy", 0, 0.10)
 	tween.tween_callback(func() -> void: is_light_on = false)
-	tween.tween_property(player_character, "modulate:a", 0.0, 1.5)
-	tween.tween_property($PassiveLight, "energy", 0.0, 1.0)
+	tween.tween_property(player_character, "modulate:a", 0.0, .75)
+	tween.tween_property($PassiveLight, "energy", 0.0, 0.5)
+	tween.tween_callback(func() -> void: tween.kill())
+
 
 func set_energy(value: float) -> void:
 	energy = clampf(value, 0.0, 1.0)
 	point_light_2d.energy = energy
+	#print("TIMER")
 	#print("new light_opacity: ", $Light/PointLight2D.modulate.a)
 
 func _on_light_timer_timeout() -> void:
@@ -91,6 +98,7 @@ func _on_light_timer_timeout() -> void:
 		light_reload_timer.start()
 		is_locked = true
 
+
 func _on_light_reload_timer_timeout() -> void:
 	_instance_tween()
 	reload_tween.tween_property(player_character, "light_fuel", player_character.max_light_fuel, 5)
@@ -98,6 +106,11 @@ func _on_light_reload_timer_timeout() -> void:
 
 	#tween.tween_callback(func() -> void: player_character.light_fuel_updated\
 			#.emit(player_character.light_fuel))
+
+## Recudes energy of the firefly's light, as it reaches lower health.
+func on_player_health_updated(health: int) -> void:
+	point_light_2d.energy = health as float / player_character.max_health
+	pass
 
 func _instance_tween() -> Tween:
 	reload_tween = get_tree().create_tween()

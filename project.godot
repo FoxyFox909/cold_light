@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Cold Light"
 config/tags=PackedStringArray("wilding")
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/ui/menu/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -26,7 +26,11 @@ gdscript/warnings/untyped_declaration=2
 gdscript/warnings/inferred_declaration=2
 gdscript/warnings/unsafe_cast=1
 gdscript/warnings/unsafe_call_argument=1
-gdscript/warnings/return_value_discarded=1
+
+[display]
+
+window/size/viewport_width=800
+window/size/viewport_height=800
 
 [input]
 

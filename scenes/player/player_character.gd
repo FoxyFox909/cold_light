@@ -13,7 +13,7 @@ signal light_fuel_updated(light_fuel: int)
 ## Maximum amount of light fuel. When this runs out, the light cannot be used anymore.
 @export var max_light_fuel : int = 100
 ## How much light_fuel the light takes to remain on per light tick.
-@export var light_cost : int = 10
+@export var light_cost : int = 8
 
 var health : int = max_health : set = set_health
 var light_fuel : int = max_light_fuel : set = set_light_fuel
@@ -29,8 +29,8 @@ func _ready() -> void:
 	light_fuel_updated.emit(light_fuel)
 	sprite.play("fly_down")
 
-	await get_tree().create_timer(2.0).timeout
-	die()
+	#await get_tree().create_timer(2.0).timeout
+	#die()
 
 func get_input() -> void:
 	var input_direction : Vector2 = Input.get_vector("left", "right", "up", "down")
@@ -73,7 +73,6 @@ func _physics_process(_delta: float) -> void:
 	get_input()
 	@warning_ignore("return_value_discarded")
 	move_and_slide()
-
 	camera_2d.global_position = position
 
 	#for i:int in get_slide_collision_count():
@@ -94,12 +93,15 @@ func set_light_fuel(value: int) -> void:
 func set_health(value: int) -> void:
 	health = clampi(value, 0, max_health)
 	health_updated.emit(health)
+	if health <= 0:
+		die()
 
 func needs_resources() -> bool:
 	return health < max_health or light_fuel < max_light_fuel
 
 ## Firefly fucking dies ;-;
 func die() -> void:
+	EventBus.freezing_damage_tick.disconnect(_on_freezing_damage_tick)
 	set_physics_process(false)
 	$CollisionShape2D.set_deferred("disabled", true)
 	sprite.pause()

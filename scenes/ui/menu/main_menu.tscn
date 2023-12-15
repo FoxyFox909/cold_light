@@ -1,90 +1,83 @@
-[gd_scene load_steps=32 format=3 uid="uid://cdcd4ggcty3gn"]
+[gd_scene load_steps=26 format=3 uid="uid://vmh6cupdyg33"]
 
-[ext_resource type="Script" path="res://scenes/player/player_character.gd" id="1_6g0kk"]
-[ext_resource type="Texture2D" uid="uid://b8omow147orhr" path="res://assets/texture/character/player/char.png" id="2_py6p6"]
-[ext_resource type="Texture2D" uid="uid://bbcv5glfaqlwx" path="res://assets/texture/character/player/char_glow.png" id="3_75kry"]
-[ext_resource type="Script" path="res://scenes/player/light.gd" id="3_ychqx"]
-[ext_resource type="PackedScene" uid="uid://cywlgo5jwwkvu" path="res://scenes/ui/player_ui.tscn" id="4_h74bv"]
-[ext_resource type="Texture2D" uid="uid://do0h62tsqfmam" path="res://assets/texture/light/point_light.png" id="5_5v1mf"]
-[ext_resource type="Script" path="res://scenes/player/zone_checker.gd" id="7_t1pru"]
-[ext_resource type="Texture2D" uid="uid://c2lle3ltew570" path="res://assets/texture/particle/firefly_light_particles.png" id="8_oifv6"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_w4shh"]
-radius = 4.12311
+[ext_resource type="Script" path="res://scenes/ui/menu/main_menu.gd" id="1_xo4nh"]
+[ext_resource type="Texture2D" uid="uid://b8omow147orhr" path="res://assets/texture/character/player/char.png" id="2_umdr1"]
+[ext_resource type="Texture2D" uid="uid://bbcv5glfaqlwx" path="res://assets/texture/character/player/char_glow.png" id="3_7tqcm"]
+[ext_resource type="Texture2D" uid="uid://c2lle3ltew570" path="res://assets/texture/particle/firefly_light_particles.png" id="4_khy2c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ayuwt"]
-atlas = ExtResource("2_py6p6")
+atlas = ExtResource("2_umdr1")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3km77"]
-atlas = ExtResource("2_py6p6")
+atlas = ExtResource("2_umdr1")
 region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tt4tp"]
-atlas = ExtResource("2_py6p6")
+atlas = ExtResource("2_umdr1")
 region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f3vca"]
-atlas = ExtResource("3_75kry")
+atlas = ExtResource("3_7tqcm")
 region = Rect2(0, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5t7ve"]
-atlas = ExtResource("3_75kry")
+atlas = ExtResource("3_7tqcm")
 region = Rect2(32, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i16wj"]
-atlas = ExtResource("3_75kry")
+atlas = ExtResource("3_7tqcm")
 region = Rect2(64, 64, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ykh1"]
-atlas = ExtResource("2_py6p6")
+atlas = ExtResource("2_umdr1")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7i15d"]
-atlas = ExtResource("2_py6p6")
+atlas = ExtResource("2_umdr1")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c1g22"]
-atlas = ExtResource("2_py6p6")
+atlas = ExtResource("2_umdr1")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6wk8v"]
-atlas = ExtResource("3_75kry")
+atlas = ExtResource("3_7tqcm")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oa18i"]
-atlas = ExtResource("3_75kry")
+atlas = ExtResource("3_7tqcm")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_um48f"]
-atlas = ExtResource("3_75kry")
+atlas = ExtResource("3_7tqcm")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ts7bc"]
-atlas = ExtResource("2_py6p6")
+atlas = ExtResource("2_umdr1")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_04thb"]
-atlas = ExtResource("2_py6p6")
+atlas = ExtResource("2_umdr1")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_epjcx"]
-atlas = ExtResource("2_py6p6")
+atlas = ExtResource("2_umdr1")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t6uf8"]
-atlas = ExtResource("3_75kry")
+atlas = ExtResource("3_7tqcm")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0gake"]
-atlas = ExtResource("3_75kry")
+atlas = ExtResource("3_7tqcm")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dagxe"]
-atlas = ExtResource("3_75kry")
+atlas = ExtResource("3_7tqcm")
 region = Rect2(64, 0, 32, 32)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_48uqd"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_sjocd"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -171,84 +164,65 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_o7hu2"]
-radius = 4.0
-
-[sub_resource type="Curve" id="Curve_3d6vq"]
+[sub_resource type="Curve" id="Curve_60v3o"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="Gradient" id="Gradient_7hhpu"]
+[sub_resource type="Gradient" id="Gradient_k5xgd"]
 offsets = PackedFloat32Array(0.00666667, 1)
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="PlayerCharacter" type="CharacterBody2D"]
-z_index = 1
-collision_mask = 8
-motion_mode = 1
-platform_on_leave = 2
-script = ExtResource("1_6g0kk")
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_xo4nh")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("CircleShape2D_w4shh")
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="Sprite" type="AnimatedSprite2D" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="Container" type="CenterContainer" parent="VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="FireflySprite" type="AnimatedSprite2D" parent="VBoxContainer/MarginContainer/Container"]
+unique_name_in_owner = true
 texture_filter = 1
-scale = Vector2(0.25, 0.25)
-sprite_frames = SubResource("SpriteFrames_48uqd")
+scale = Vector2(2.825, 2.825)
+sprite_frames = SubResource("SpriteFrames_sjocd")
 animation = &"fly_down"
 
-[node name="Light" type="Node2D" parent="."]
-script = ExtResource("3_ychqx")
-
-[node name="PassiveLight" type="PointLight2D" parent="Light"]
-scale = Vector2(0.05, 0.05)
-energy = 0.2
-texture = ExtResource("5_5v1mf")
-
-[node name="PointLight2D" type="PointLight2D" parent="Light"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("5_5v1mf")
-
-[node name="LightTimer" type="Timer" parent="Light"]
-unique_name_in_owner = true
-
-[node name="LightReloadTimer" type="Timer" parent="Light"]
-unique_name_in_owner = true
-wait_time = 2.25
-one_shot = true
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(6, 6)
-
-[node name="PlayerUI" parent="." node_paths=PackedStringArray("player_character") instance=ExtResource("4_h74bv")]
-player_character = NodePath("..")
-
-[node name="ZoneChecker" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 16
-script = ExtResource("7_t1pru")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ZoneChecker"]
-visible = false
-shape = SubResource("CircleShape2D_o7hu2")
-
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="VBoxContainer/MarginContainer/Container/FireflySprite"]
 lifetime = 1.5
 preprocess = 2.0
-texture = ExtResource("8_oifv6")
+texture = ExtResource("4_khy2c")
 emission_shape = 2
-emission_sphere_radius = 5.2
+emission_sphere_radius = 9.65
 direction = Vector2(0, 0)
-gravity = Vector2(0, 0)
+gravity = Vector2(0, 75)
 angular_velocity_min = -100.0
 angular_velocity_max = 100.0
-radial_accel_min = 15.0
-radial_accel_max = 45.0
+radial_accel_min = 30.0
+radial_accel_max = 60.0
 damping_min = 30.0
 damping_max = 85.0
-damping_curve = SubResource("Curve_3d6vq")
-scale_amount_min = 0.25
-scale_amount_max = 0.5
-color_ramp = SubResource("Gradient_7hhpu")
+damping_curve = SubResource("Curve_60v3o")
+scale_amount_max = 1.5
+color_ramp = SubResource("Gradient_k5xgd")
+
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "START"
