@@ -9,9 +9,12 @@ extends CharacterBody2D
 ## how much light fuel the tick should restore.
 @export var light_fuel_amount : int = 10
 
+@onready var sprite: AnimatedSprite2D = $Sprite
+
 var current_velocity : Vector2
 
 func _ready() -> void:
+	sprite.play("crawl")
 	randomize_movement()
 
 func _physics_process(_delta: float) -> void:
@@ -30,6 +33,7 @@ func _physics_process(_delta: float) -> void:
 func randomize_movement() -> void:
 	var next_velocity : Vector2 = Vector2.ONE.rotated(randf_range(0, PI * 2)) * move_speed
 	current_velocity = next_velocity
+	sprite.rotation = next_velocity.angle() + (PI / 2)
 
 func feed_player(player: PlayerCharacter) -> void:
 	player.health += health_amount

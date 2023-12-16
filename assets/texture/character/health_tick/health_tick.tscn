@@ -1,8 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://deu45avcntuc8"]
+[gd_scene load_steps=9 format=3 uid="uid://deu45avcntuc8"]
 
 [ext_resource type="Script" path="res://assets/texture/character/health_tick/health_tick.gd" id="1_55gcw"]
-[ext_resource type="Texture2D" uid="uid://cgkpk4w5itdqj" path="res://icon.svg" id="2_dgn52"]
+[ext_resource type="Texture2D" uid="uid://r68j04pmp716" path="res://assets/texture/character/health_tick/tick_sprite.png" id="2_0eunn"]
 [ext_resource type="Texture2D" uid="uid://do0h62tsqfmam" path="res://assets/texture/light/point_light.png" id="3_ui8ua"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31yvo"]
+atlas = ExtResource("2_0eunn")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2oaa"]
+atlas = ExtResource("2_0eunn")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fouvk"]
+atlas = ExtResource("2_0eunn")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4mxj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31yvo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2oaa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fouvk")
+}],
+"loop": true,
+"name": &"crawl",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_cmxhq"]
 radius = 16.4924
@@ -12,10 +41,10 @@ collision_mask = 9
 motion_mode = 1
 script = ExtResource("1_55gcw")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.211765, 0.27451, 1)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_dgn52")
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.36, 0.36)
+sprite_frames = SubResource("SpriteFrames_4mxj2")
+animation = &"crawl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 scale = Vector2(0.25, 0.25)
