@@ -99,15 +99,19 @@ func set_health(value: int) -> void:
 func needs_resources() -> bool:
 	return health < max_health or light_fuel < max_light_fuel
 
-## Firefly fucking dies ;-;
+## Firefly dies ;-;
 func die() -> void:
 	EventBus.freezing_damage_tick.disconnect(_on_freezing_damage_tick)
 	set_physics_process(false)
 	$CollisionShape2D.set_deferred("disabled", true)
 	sprite.pause()
 	light.death_light()
+	EventBus.game_won.emit()
 
-
+## Firefly wins :D
+func win() -> void:
+	$ZoneChecker.call_deferred("queue_free")
+	EventBus.freezing_damage_tick.disconnect(_on_freezing_damage_tick)
 
 func _on_freezing_damage_tick(damage_amount: int) -> void:
 	health -= damage_amount

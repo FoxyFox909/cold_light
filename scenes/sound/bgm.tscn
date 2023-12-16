@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4aqvapoiew8g"]
+
+[ext_resource type="AudioStream" uid="uid://bds0snsib1lyd" path="res://assets/sound/foxs_freezing_firefly_theme.mp3" id="1_mrl58"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_mrl58")
+autoplay = true

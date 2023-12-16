@@ -10,17 +10,18 @@
 script = ExtResource("1_8qpiv")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_n3hi5")]
-position = Vector2(101, 78)
+position = Vector2(101, 42)
 
 [node name="Maze" parent="." instance=ExtResource("1_ujtys")]
 
 [node name="FreezeTicker" parent="." instance=ExtResource("3_k7bgr")]
+damage_per_tick = 3
 
 [node name="HealthTick" parent="." instance=ExtResource("4_4ey4c")]
 position = Vector2(98, 122)
 
 [node name="HealthTick2" parent="." instance=ExtResource("4_4ey4c")]
-position = Vector2(240, 176)
+position = Vector2(880, 347)
 
 [node name="HealthTick3" parent="." instance=ExtResource("4_4ey4c")]
 position = Vector2(343, 175)
@@ -29,16 +30,16 @@ position = Vector2(343, 175)
 position = Vector2(327, 38)
 
 [node name="HealthTick5" parent="." instance=ExtResource("4_4ey4c")]
-position = Vector2(87, 218)
+position = Vector2(987, 98)
 
 [node name="HealthTick6" parent="." instance=ExtResource("4_4ey4c")]
 position = Vector2(109, 284)
 
 [node name="HealthTick7" parent="." instance=ExtResource("4_4ey4c")]
-position = Vector2(111, 213)
+position = Vector2(733, 337)
 
 [node name="HealthTick8" parent="." instance=ExtResource("4_4ey4c")]
-position = Vector2(80, 336)
+position = Vector2(444, 528)
 
 [node name="HealthTick9" parent="." instance=ExtResource("4_4ey4c")]
-position = Vector2(105, 409)
+position = Vector2(654, 112)

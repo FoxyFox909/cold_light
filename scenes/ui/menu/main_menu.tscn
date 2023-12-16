@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://vmh6cupdyg33"]
+[gd_scene load_steps=27 format=3 uid="uid://vmh6cupdyg33"]
 
 [ext_resource type="Script" path="res://scenes/ui/menu/main_menu.gd" id="1_xo4nh"]
 [ext_resource type="Texture2D" uid="uid://b8omow147orhr" path="res://assets/texture/character/player/char.png" id="2_umdr1"]
+[ext_resource type="Texture2D" uid="uid://bua2yjb6ali0b" path="res://assets/texture/background/main_menu_bg.png" id="2_y0t47"]
 [ext_resource type="Texture2D" uid="uid://bbcv5glfaqlwx" path="res://assets/texture/character/player/char_glow.png" id="3_7tqcm"]
 [ext_resource type="Texture2D" uid="uid://c2lle3ltew570" path="res://assets/texture/particle/firefly_light_particles.png" id="4_khy2c"]
 
@@ -175,6 +176,10 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 [node name="MainMenu" type="CanvasLayer"]
 script = ExtResource("1_xo4nh")
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(400, 400)
+texture = ExtResource("2_y0t47")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -226,3 +231,9 @@ color_ramp = SubResource("Gradient_k5xgd")
 layout_mode = 2
 size_flags_vertical = 3
 text = "START"
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.00392157, 0.219608, 0.388235, 1)
+text = "Move: WASD/Arrows
+Light: Space"
