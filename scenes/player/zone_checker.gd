@@ -11,7 +11,7 @@ func _on_body_shape_entered(body_rid: RID, body: Node2D,
 		var coords: Vector2i = body.get_coords_for_body_rid(body_rid)
 		var atlas_coords : Vector2i = body.get_cell_atlas_coords(0, coords)
 
-		if atlas_coords == Vector2i(2, 0):
+		if atlas_coords == Vector2i(1, 0):
 			print("You won!")
 			player_character.win()
 			EventBus.game_won.emit()
