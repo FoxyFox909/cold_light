@@ -10,7 +10,7 @@
 script = ExtResource("1_8qpiv")
 
 [node name="PlayerCharacter" parent="." instance=ExtResource("2_n3hi5")]
-position = Vector2(986, 625)
+position = Vector2(41, 27)
 
 [node name="Maze" parent="." instance=ExtResource("1_ujtys")]
 
